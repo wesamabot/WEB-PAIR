@@ -81,20 +81,20 @@ router.get("/", async (req, res) => {
               ""
             );
 
-            const sid = `*ROBIN [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is the your Session ID, copy this id and paste into config.js file*\n\n*You can ask any question using this link*\n\n*wa.me/message/WKGLBR2PCETWD1*\n\n*You can join my whatsapp group*\n\n*https://chat.whatsapp.com/GAOhr0qNK7KEvJwbenGivZ*`;
+            const sid = `*KAVINDU [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is the your Session ID, copy this id and paste into config.js file*\n\n*You can ask any question using this link*\n\n*https://wa.me/message/B4RSIWA4L45OE1*\n\n*You can join my whatsapp group*\n\n*https://chat.whatsapp.com/D3HN2z14favGyrWes89Hst*`;
             const mg = `🛑 *Do not share this code to anyone* 🛑`;
-            const dt = await RobinPairWeb.sendMessage(user_jid, {
+            const dt = await KavinduPairWeb.sendMessage(user_jid, {
               image: {
                 url: "https://raw.githubusercontent.com/Dark-Robin/Bot-Helper/refs/heads/main/autoimage/Bot%20robin%20WP.jpg",
               },
               caption: sid,
             });
-            const msg = await RobinPairWeb.sendMessage(user_jid, {
+            const msg = await KavinduPairWeb.sendMessage(user_jid, {
               text: string_session,
             });
-            const msg1 = await RobinPairWeb.sendMessage(user_jid, { text: mg });
+            const msg1 = await KavinduPairWeb.sendMessage(user_jid, { text: mg });
           } catch (e) {
-            exec("pm2 restart prabath");
+            exec("pm2 restart kavindu");
           }
 
           await delay(100);
@@ -107,25 +107,25 @@ router.get("/", async (req, res) => {
           lastDisconnect.error.output.statusCode !== 401
         ) {
           await delay(10000);
-          RobinPair();
+          KavinduPair();
         }
       });
     } catch (err) {
       exec("pm2 restart Robin-md");
       console.log("service restarted");
-      RobinPair();
+      KavinduPair();
       await removeFile("./session");
       if (!res.headersSent) {
         await res.send({ code: "Service Unavailable" });
       }
     }
   }
-  return await RobinPair();
+  return await KavinduPair();
 });
 
 process.on("uncaughtException", function (err) {
   console.log("Caught exception: " + err);
-  exec("pm2 restart Robin");
+  exec("pm2 restart Kavindu");
 });
 
 module.exports = router;
